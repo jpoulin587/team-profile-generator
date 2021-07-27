@@ -29,18 +29,18 @@ describe("Employee class", () => {
     })
     
     it('should return employee id from getId()', () =>{
-        const test = "1";
-        const employee = new Employee(test);
+        const test = 1;
+        const employee = new Employee("Dave", test);
         expect(employee.getId()).toBe(test);
     })
     
-    it('should return employee id from getEmail()', () =>{
+    it('should return employee email from getEmail()', () =>{
         const test = "dave@company.com";
-        const employee = new Employee(test);
+        const employee = new Employee("Dave", 1, test);
         expect(employee.getEmail()).toBe(test);
     })
 
-    it('should return employee id from getEmail()', () =>{
+    it('should return employee role from getRole()', () =>{
         const test = "Employee";
         const employee = new Employee(test);
         expect(employee.getRole()).toBe(test);
