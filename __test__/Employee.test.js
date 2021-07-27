@@ -22,9 +22,28 @@ describe("Employee class", () => {
         expect(employee.email).toBe('dave@company.com');
     })
 
-
+    it('should return employee name from getName()', () =>{
+        const test = "Dave";
+        const employee = new Employee(test);
+        expect(employee.getName()).toBe(test);
+    })
     
+    it('should return employee id from getId()', () =>{
+        const test = "1";
+        const employee = new Employee(test);
+        expect(employee.getId()).toBe(test);
+    })
+    
+    it('should return employee id from getEmail()', () =>{
+        const test = "dave@company.com";
+        const employee = new Employee(test);
+        expect(employee.getEmail()).toBe(test);
+    })
 
+    it('should return employee id from getEmail()', () =>{
+        const test = "Employee";
+        const employee = new Employee(test);
+        expect(employee.getRole()).toBe(test);
+    })
 
-
-})
+});
