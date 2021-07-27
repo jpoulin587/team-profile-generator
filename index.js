@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const Employee = require("./lib/Employee");
+const Employee = require("./lib/Employee").default;
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
