@@ -1,14 +1,21 @@
 const Engineer = require('../lib/Engineer');
 
-describe("Engineer class", () => {
-    it("can be instantiated", () => {
-        const employee = new Employee();
-        expect(typeof(engineer)).toBe("object");
-        expect(employee instanceof Engineer).toBe(true);
+    it('should return employee github from ', () =>{
+        const test = "github.com/dave";
+        const employee = new Engineer("Dave", 1, "dave@company.com", test );
+        expect(employee.gitHub).toBe(test);
     })
 
-    
+    it('should return employee github from getHub()', () =>{
+        const test = "github.com/dave";
+        const employee = new Engineer("Dave", 1, "dave@company.com", test );
+        expect(employee.getGithub()).toBe(test);
+    }) 
 
+    it('should return employee role from getRole()', () =>{
+        const test = "Engineer";
+        const employee = new Engineer(test);
+        expect(employee.getRole()).toBe(test);
+    })
 
-});
 
