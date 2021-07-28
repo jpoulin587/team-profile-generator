@@ -32,26 +32,40 @@ function addEmployee() {
             },
         ])
         .then ((data) => {
-            let roleData = ""
+            console.log(data);
+            let roleSpecific = ""
             switch (data.roleSelect) {
                 case 'Manager':
-                    roleData = 'office number'
-                    console.log(roleData);
+                    roleSpecific = 'office number'
+                    console.log(roleSpecific);
                     break;
 
                     case 'Engineer':
-                    roleData = 'Github Repo'
-                    console.log(roleData);
+                    roleSpecific = 'Github Repo'
+                    console.log(roleSpecific);
                     break;
 
                     case 'Intern':
-                    roleData = 'school'
-                    console.log(roleData);
+                    roleSpecific = 'school'
+                    console.log(roleSpecific);
                     break;
             
                 default:
                     break;
             }
+            inquirer.prompt([{
+                message: `Enter team member's ${roleSpecific}`,
+                name: 'roleSpecific'
+            },
+            {
+                type: 'list',
+                message: 'Would you like to add more team members?',
+                choices: ['yes','no'],
+                name: "moreMembers"
+            }])
+            .then((data) => {
+            console.log(data);
+            });
         });
         
 
