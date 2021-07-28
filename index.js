@@ -55,7 +55,7 @@ function addEmployee() {
             }
             inquirer.prompt([{
                 message: `Enter team member's ${roleSpecific}`,
-                name: 'roleSpecific'
+                name: 'roleSelect'
             },
             {
                 type: 'list',
@@ -68,16 +68,16 @@ function addEmployee() {
                 //console.log(data2);
                 let dataFull = {
                     ...data,
-                    ...data2
+                    ...data2,
                 };
                 console.log(dataFull);
                 console.log(dataFull.roleSelect);
+                console.log(roleSpecific);
 
-                const writeHtml = generateHtml(dataFull);
+                //const writeHtml = generateHtml(dataFull);
                 
-                fs.writeFile(team-roster.html, writeHtml, (err) =>
-                err ? console.log(err) : console.log('Success!')
-                );
+                //fs.writeFile(team-roster.html, writeHtml, (err) => err ? console.log(err) : console.log('Success!')
+                //);
 
             });
         });
@@ -89,10 +89,37 @@ function addEmployee() {
 }; //end of the addEmployee function
 
 
-function generateHtml() {
-//TODO html template here
+const generateHtml = (dataFull) =>
+    `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Team</title>
+    </head>
+    <body>
+        <h1> My Team</h1>
+        <section id=team-list class="row justify-content-around">
+    
+    <!-- refer to the weather dashboard project for this code-->
+    
+    <h1>${dataFull.nameSelect}</h1>
+    <h2>${dataFull.roleSelect}</h2>
+    <p>ID: ${dataFull.IDSelect}</p>
+    <p>email: ${dataFull.emailSelect}(enter email)</p>
+    <p>${roleSpecific}: ${dataFull.roleSelect}</p>
+    
+    
+        </section>        
+    </body>
+    </html>
 
-;}
+`
+
+
+
 
 
 addEmployee();
