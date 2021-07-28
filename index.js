@@ -32,22 +32,22 @@ function addEmployee() {
             },
         ])
         .then ((data) => {
-            console.log(data);
+            //console.log(data);
             let roleSpecific = ""
             switch (data.roleSelect) {
                 case 'Manager':
                     roleSpecific = 'office number'
-                    console.log(roleSpecific);
+                    //console.log(roleSpecific);
                     break;
 
                     case 'Engineer':
                     roleSpecific = 'Github Repo'
-                    console.log(roleSpecific);
+                    //console.log(roleSpecific);
                     break;
 
                     case 'Intern':
                     roleSpecific = 'school'
-                    console.log(roleSpecific);
+                    //console.log(roleSpecific);
                     break;
             
                 default:
@@ -63,8 +63,22 @@ function addEmployee() {
                 choices: ['yes','no'],
                 name: "moreMembers"
             }])
-            .then((data) => {
-            console.log(data);
+            .then((data2) => {
+                //console.log(data)
+                //console.log(data2);
+                let dataFull = {
+                    ...data,
+                    ...data2
+                };
+                console.log(dataFull);
+                console.log(dataFull.roleSelect);
+
+                const writeHtml = generateHtml(dataFull);
+                
+                fs.writeFile(team-roster.html, writeHtml, (err) =>
+                err ? console.log(err) : console.log('Success!')
+                );
+
             });
         });
         
@@ -75,24 +89,7 @@ function addEmployee() {
 }; //end of the addEmployee function
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function writeHtml() {
+function generateHtml() {
 //TODO html template here
 
 ;}
