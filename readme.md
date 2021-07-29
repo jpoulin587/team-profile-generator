@@ -49,3 +49,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## Video Walkthrough
 
 A short video of the functionality of this project can be found at the link below.
+
+https://drive.google.com/file/d/1qzm7QlwQWuXJGHtZa0YdDqkDpAuK5Q3b/view
