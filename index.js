@@ -123,7 +123,7 @@ function makeCards(employeeRoster) {
             <p>${employeeRoster[i].roleSelect}</p>
             <p>ID: ${employeeRoster[i].idSelect}</p>
             <p>Email: <a href="mailto:${employeeRoster[i].emailSelect}"> ${employeeRoster[i].emailSelect}</a></p>
-            <p>${roleThing}: <a href="https://github.com/${employeeRoster[i].roleOption}">Click for Github</a></p>
+            <p>${roleThing}: ${employeeRoster[i].roleOption}</p>
         </div>
         `       
     }
