@@ -98,14 +98,30 @@ function addEmployee() {
 function makeCards(employeeRoster) {
     let cardHtml = "";
     for (let i = 0; i < employeeRoster.length; i++) {
-        console.log(employeeRoster[i]);
+        let roleThing = "";
+        switch (employeeRoster[i].roleSelectkey) {
+            case 'Manager':
+                roleThing = 'Office number: '
+            break;
+            case 'Intern':
+                roleThing = 'School: '
+            
+            break; 
+            case 'Engineer':
+                roleThing = 'GitHub: '
+            break;
+        default:
+            break;
+        }
+
+
         cardHtml +=`
         <div>
             <h2>${employeeRoster[i].nameSelect}</h2>
             <p>${employeeRoster[i].roleSelect}</p>
             <p>ID: ${employeeRoster[i].idSelect}</p>
             <p>Email: ${employeeRoster[i].emailSelect}</p>
-            <p>Role Option: ${employeeRoster[i].roleOption}</p>
+            <p>${roleThing}: ${employeeRoster[i].roleOption}</p>
         </div>
         `       
     }
