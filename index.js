@@ -1,9 +1,11 @@
 const inquirer = require("inquirer");
-const Employee = require("./lib/Employee").default;
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
-const Manager = require("./lib/Manager");
+// const Employee = require("./lib/Employee").default;
+// const Engineer = require("./lib/Engineer");
+// const Intern = require("./lib/Intern");
+// const Manager = require("./lib/Manager");
 const fs = require("fs");
+let roleSpecific;
+let employeeRoster = [];
 
 
 function addEmployee() {
@@ -33,7 +35,7 @@ function addEmployee() {
         ])
         .then ((data) => {
             //console.log(data);
-            let roleSpecific = ""
+            roleSpecific = ""
             switch (data.roleSelect) {
                 case 'Manager':
                     roleSpecific = 'office number'
@@ -55,7 +57,7 @@ function addEmployee() {
             }
             inquirer.prompt([{
                 message: `Enter team member's ${roleSpecific}`,
-                name: 'roleSelect'
+                name: 'roleOption'
             },
             {
                 type: 'list',
@@ -71,14 +73,22 @@ function addEmployee() {
                     ...data2,
                 };
                 console.log(dataFull);
-                console.log(dataFull.roleSelect);
+                console.log(dataFull.roleOption);
                 console.log(roleSpecific);
+                employeeRoster.push(dataFull);
+                    console.log(employeeRoster);
 
-                //const writeHtml = generateHtml(dataFull);
+                //TODO send back for more team members but don't delete the old one.
+                if (data2.moreMembers === "yes"){
+                    addEmployee();
+                };
+
+               makeCards();
+
+ const writeHtml = generateHtml();
                 
-                //fs.writeFile(team-roster.html, writeHtml, (err) => err ? console.log(err) : console.log('Success!')
-                //);
-
+                fs.writeFile('team-roster.html', writeHtml, (err) => err ? console.log(err) : console.log('Success!')
+                );
             });
         });
         
@@ -88,33 +98,69 @@ function addEmployee() {
 
 }; //end of the addEmployee function
 
+function makeCards(employeeRoster) {
+    let cardHtml = "";
+    for (let i = 0; i < employeeRoster.length; i++) {
+        console.log(employeeRoster[i]);
+        cardHtml +=`
+        <div>
+            <h2>employeeRoster[i].nameSelect</h2>
+            <p>clear sky</p>
+            <p>humidity: 45</p>
+            <p>Hi Temp: 94.57</p>
+            <p>Lo Temp: 78.03</p>
+            <p>Wind: 9.17</p>
+        </div>
+        `       
+        
+    }
 
-const generateHtml = (dataFull) =>
+}
+
+
+
+
+
+
+const generateHtml = () => 
     `
     <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Team</title>
-    </head>
-    <body>
-        <h1> My Team</h1>
-        <section id=team-list class="row justify-content-around">
-    
-    <!-- refer to the weather dashboard project for this code-->
-    
-    <h1>${dataFull.nameSelect}</h1>
-    <h2>${dataFull.roleSelect}</h2>
-    <p>ID: ${dataFull.IDSelect}</p>
-    <p>email: ${dataFull.emailSelect}(enter email)</p>
-    <p>${roleSpecific}: ${dataFull.roleSelect}</p>
-    
-    
-        </section>        
-    </body>
-    </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>My Team</title>
+
+ <style>
+    h2 {
+    font-size: medium;
+    background-color: blue;
+    color: cornsilk;
+    }
+
+</style>   
+</head>
+
+<body>
+
+    <header class="container-fluid bg-dark text-light mb-5 p-3">
+        <div class="d-flex align-items-center">
+            <h1>My Team</h1>
+        </div>
+        </header>
+            <div class="col-12 col-md-9">
+                <section id="five-day-list" class="row justify-content-around">
+                <!-- the div below is replaced with the makeCards function-->   
+            ${makeCards(employeeRoster)}        
+                </section>
+
+</div>
+</body>
+
+</html>
+            
 
 `
 
@@ -123,3 +169,5 @@ const generateHtml = (dataFull) =>
 
 
 addEmployee();
+
+

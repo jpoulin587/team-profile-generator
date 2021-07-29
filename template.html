@@ -4,21 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <title>My Team</title>
+
+ <style>
+    h2 {
+    font-size: medium;
+    background-color: blue;
+    color: cornsilk;
+    }
+
+</style>   
 </head>
+
 <body>
-    <h1> My Team</h1>
-    <section id=team-list class="row justify-content-around">
 
-<!-- refer to the weather dashboard project for this code-->
+    <header class="container-fluid bg-dark text-light mb-5 p-3">
+        <div class="d-flex align-items-center">
+          <h1>My Team</h1>
+        </div>
+      </header>
+      <div class="col-12 col-md-9">
+        <section id="five-day-list" class="row justify-content-around">
+         <!-- the div below is replaced with the makeCards function-->   
+        <div>
+            <h2>2021-07-28</h2>
+            <p>clear sky</p>
+            <p>humidity: 45</p>
+            <p>Hi Temp: 94.57</p>
+            <p>Lo Temp: 78.03</p>
+            <p>Wind: 9.17</p>
+        </div>
+       
+        
+    </section>
 
-<h1>employee name</h1>
-<h2>title</h2>
-<p>ID: (enter ID)</p>
-<p>email: (enter email)</p>
-<p>roleSpecific: (enter rollSpecific)</p>
-
-
-    </section>        
+</div>
 </body>
+
 </html>
