@@ -83,9 +83,9 @@ function addEmployee() {
                     addEmployee();
                 };
 
-               makeCards();
+            makeCards();
 
- const writeHtml = generateHtml();
+            const writeHtml = generateHtml();
                 
                 fs.writeFile('team-roster.html', writeHtml, (err) => err ? console.log(err) : console.log('Success!')
                 );
@@ -104,23 +104,17 @@ function makeCards(employeeRoster) {
         console.log(employeeRoster[i]);
         cardHtml +=`
         <div>
-            <h2>employeeRoster[i].nameSelect</h2>
-            <p>clear sky</p>
-            <p>humidity: 45</p>
-            <p>Hi Temp: 94.57</p>
-            <p>Lo Temp: 78.03</p>
-            <p>Wind: 9.17</p>
+            <h2>${employeeRoster[i].nameSelect}</h2>
+            <p>${employeeRoster[i].roleSelect}</p>
+            <p>ID: ${employeeRoster[i].idSelect}</p>
+            <p>Email: ${employeeRoster[i].emailSelect}</p>
+            <p>Role Option: ${employeeRoster[i].roleOption}</p>
         </div>
         `       
-        
     }
+    return cardHtml;
 
 }
-
-
-
-
-
 
 const generateHtml = () => 
     `
@@ -133,7 +127,7 @@ const generateHtml = () =>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <title>My Team</title>
 
- <style>
+<style>
     h2 {
     font-size: medium;
     background-color: blue;
@@ -160,14 +154,7 @@ const generateHtml = () =>
 </body>
 
 </html>
-            
-
 `
-
-
-
-
-
 addEmployee();
 
 
