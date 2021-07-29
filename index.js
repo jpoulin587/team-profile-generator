@@ -118,7 +118,7 @@ function makeCards(employeeRoster) {
             break;
         }
         cardHtml +=`
-        <div class="card text-white bg-info mb-3" style="max-width: 18rem;" >
+        <div class="card bg-light mb-3" style="max-width: 18rem;" >
             <h2>${employeeRoster[i].nameSelect}</h2>
             <p>${employeeRoster[i].roleSelect}</p>
             <p>ID: ${employeeRoster[i].idSelect}</p>
