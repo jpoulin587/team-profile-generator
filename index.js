@@ -6,6 +6,7 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 let roleSpecific;
 let employeeRoster = [];
+var roleThing;
 
 
 function addEmployee() {
@@ -72,20 +73,23 @@ function addEmployee() {
                     ...data,
                     ...data2,
                 };
-                console.log(dataFull);
-                console.log(dataFull.roleOption);
-                console.log(roleSpecific);
+                //console.log(dataFull);
+                //console.log(dataFull.roleOption);
+                //console.log(roleSpecific);
                 employeeRoster.push(dataFull);
-                    console.log(employeeRoster);
+                    //console.log(employeeRoster);
 
                 if (data2.moreMembers === "yes"){
                     addEmployee();
-                };
+                } else {
 
-            const writeHtml = generateHtml();
+                 const writeHtml = generateHtml();
                 
                 fs.writeFile('team-roster.html', writeHtml, (err) => err ? console.log(err) : console.log('Success!')
-                );
+                );    
+                };
+
+           
             });
         });
         
@@ -98,8 +102,8 @@ function addEmployee() {
 function makeCards(employeeRoster) {
     let cardHtml = "";
     for (let i = 0; i < employeeRoster.length; i++) {
-        let roleThing = "";
-        switch (employeeRoster[i].roleSelectkey) {
+        roleThing = "";
+        switch (employeeRoster[i].roleSelect) {
             case 'Manager':
                 roleThing = 'Office number: '
             break;
@@ -113,15 +117,13 @@ function makeCards(employeeRoster) {
         default:
             break;
         }
-
-
         cardHtml +=`
         <div>
             <h2>${employeeRoster[i].nameSelect}</h2>
             <p>${employeeRoster[i].roleSelect}</p>
             <p>ID: ${employeeRoster[i].idSelect}</p>
             <p>Email: ${employeeRoster[i].emailSelect}</p>
-            <p>${roleThing}: ${employeeRoster[i].roleOption}</p>
+            <p>${roleThing} ${employeeRoster[i].roleOption}</p>
         </div>
         `       
     }
