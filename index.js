@@ -78,12 +78,9 @@ function addEmployee() {
                 employeeRoster.push(dataFull);
                     console.log(employeeRoster);
 
-                //TODO send back for more team members but don't delete the old one.
                 if (data2.moreMembers === "yes"){
                     addEmployee();
                 };
-
-            makeCards();
 
             const writeHtml = generateHtml();
                 
